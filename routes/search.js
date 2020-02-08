@@ -7,6 +7,7 @@ let browser_config = {
     headless : true,
     debug_level: 1,
     sleep_range: '',
+    //proxy: 'socks5://127.0.0.1:1080',
     puppeteer_cluster_config: {
         timeout: 30 * 60 * 1000, // max timeout set to 30 minutes
         monitor: false,
@@ -20,7 +21,8 @@ router.get('/',function(req,res){
         let scrape_job = {
             search_engine: GoogleScholarScraper,
             keywords: [keywords],
-            num_pages: 2
+            num_pages: 2,
+            block_assets:true
         };
         console.log(keywords);
         let scraper = new se_scraper.ScrapeManager(browser_config);
